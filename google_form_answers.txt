@@ -1,0 +1,5 @@
+0. We don't have a Pokemon model yet
+
+1. The sample method in home_controller.rb finds a random pokemon in our table. The common factor is that these are all of the pokemon we've created in our database so far
+
+2. 
