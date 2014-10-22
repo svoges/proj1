@@ -18,7 +18,7 @@ class PokemonsController < ApplicationController
     else
       @pokemon.save
     end
-    redirect_to trainer_path(current_trainer[:id])
+    redirect_to trainer_path(@pokemon.trainer_id)
   end
 
   def new
