@@ -5,9 +5,15 @@
   <h4>Pokemons:</h4>
     <ul>
       <% @trainer.pokemons.each do |pokemon| %>
-        <h5><%= pokemon.name %>:</h5> <%= button_to "Damage!", damage_path(id: pokemon), :class => "button medium", :method => :patch %>
-          <h6>Level: <%= pokemon.level %></h6>
-          <h6>Health: <%= pokemon.health %></h6>
+        <% if pokemon.trainer_id == current_trainer[:id] or pokemon.health > 0 %>
+          <h5><%= pokemon.name %>:</h5>
+            <h6>Level: <%= pokemon.level %></h6>
+            <h6>Health: <%= pokemon.health %></h6>
+            <%= button_to "Damage!", damage_path(id: pokemon), :class => "button medium", :method => :patch %>
+            <% if pokemon.trainer_id == current_trainer[:id] %>
+              <%= button_to "Heal!", heal_path(id: pokemon), :class => "button medium", :method => :patch %>
+            <% end %>
+        <% end %>
       <% end %>
     </ul>
 <% else %>
